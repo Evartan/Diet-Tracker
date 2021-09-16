@@ -1,0 +1,10 @@
+<h2 class="page-header"><%= diet.name %></h2>
+<div class="btn-row">
+  <a class="btn btn-primary" href="/diets/<%= diet.id %>/edit">Edit</a>
+  <%- include('../partials/deleteForm',
+              { url: `/diets/${diet.id}` }) %>
+</div>
+<% if (mealsByDiet.length > 0) { %>
+  <h2 class="page-header">Meals By Diet</h2>
+  <%- include('../partials/mealGrid', { meals: mealsByDiet }) %>
+<% } %>

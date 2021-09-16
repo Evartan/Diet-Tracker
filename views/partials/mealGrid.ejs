@@ -1,0 +1,9 @@
+<% mealImageClass = locals.large ? 'meal-image-large' : '' %>
+<% mealGridClass = locals.large ? 'meal-grid-large' : '' %>
+<div class="meal-grid <%= mealGridClass %>">
+  <% meals.forEach(meal => { %>
+    <a href="/meals/<%= meal.id %>">
+      <img class="meal-image <%= mealImageClass %>" src="<%= meal.mealImagePath %>">
+    </a>
+  <% }) %>
+</div>

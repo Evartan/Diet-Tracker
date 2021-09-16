@@ -1,18 +1,18 @@
 const mongoose = require('mongoose')
 
-const bookSchema = new mongoose.Schema({
-  title: {
+const mealSchema = new mongoose.Schema({
+  label: {
     type: String,
     required: true
   },
   description: {
     type: String
   },
-  publishDate: {
+  consumeDate: {
     type: Date,
     required: true
   },
-  pageCount: {
+  calCount: {
     type: Number,
     required: true
   },
@@ -21,25 +21,25 @@ const bookSchema = new mongoose.Schema({
     required: true,
     default: Date.now
   },
-  coverImage: {
+  mealImage: {
     type: Buffer,
     required: true
   },
-  coverImageType: {
+  mealImageType: {
     type: String,
     required: true
   },
-  author: {
+  diet: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: 'Author'
+    ref: 'Diet'
   }
 })
 
-bookSchema.virtual('coverImagePath').get(function() {
-  if (this.coverImage != null && this.coverImageType != null) {
-    return `data:${this.coverImageType};charset=utf-8;base64,${this.coverImage.toString('base64')}`
+mealSchema.virtual('mealImagePath').get(function() {
+  if (this.mealImage != null && this.mealImageType != null) {
+    return `data:${this.mealImageType};charset=utf-8;base64,${this.mealImage.toString('base64')}`
   }
 })
 
-module.exports = mongoose.model('Book', bookSchema)
+module.exports = mongoose.model('Meal', mealSchema)

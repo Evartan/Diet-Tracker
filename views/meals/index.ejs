@@ -1,0 +1,24 @@
+<h2 class="page-header">Search Meal</h2>
+<form action="/meals" method="GET">
+  <div class="form-row">
+    <div class="form-item">
+      <label>Label</label>
+      <input type="text" name="label" value="<%= searchOptions.label %>">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-item">
+      <label>Consumed After</label>
+      <input type="date" name="consumedAfter" value="<%= searchOptions.consumedAfter %>">
+    </div>
+    <div class="form-item">
+      <label>Consumed Before</label>
+      <input type="date" name="consumedBefore" value="<%= searchOptions.consumedBefore %>">
+    </div>
+  </div>
+  <div class="form-row form-row-end">
+    <button class="btn btn-primary" type="submit">Search</button>
+  </div>
+</form>
+<br>
+<%- include('../partials/mealGrid', { meals: meals, large: true }) %>

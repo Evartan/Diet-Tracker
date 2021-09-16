@@ -1,0 +1,41 @@
+<div class="form-row">
+    <div class="form-item">
+      <label>Label</label>
+      <input type="text" name="label" value="<%= meal.label %>">
+    </div>
+    <div class="form-item">
+      <label>Diet</label>
+      <select name="diet">
+        <% diets.forEach(diet => { %>
+          <% if (diet.id === meal.diet) { %>
+            <option selected label="<%= diet.name %>" value="<%= diet.id %>">
+          <% } else { %>
+            <option label="<%= diet.name %>" value="<%= diet.id %>">
+          <% } %>
+        <% }) %>
+      </select>
+    </div>
+  </div>
+  
+  <div class="form-row">
+    <div class="form-item">
+      <label>Consume Date</label>
+      <input type="date" name="consumeDate"
+            value="<%= meal.consumeDate == null ? '' : meal.consumeDate.toISOString().split('T')[0] %>">
+    </div>
+    <div class="form-item">
+      <label>Calorie Count</label>
+      <input type="number" name="calCount" min="1" value="<%= meal.calCount %>">
+    </div>
+  </div>
+  
+  <div class="form-row">
+    <div class="form-item form-item-no-grow">
+      <label>Image</label>
+      <input type="file" name="image" class="meal-image filepond">
+    </div>
+    <div class="form-item">
+      <label>Description</label>
+      <textarea name="description"><%= meal.description %></textarea>
+    </div>
+  </div>

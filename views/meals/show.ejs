@@ -1,0 +1,21 @@
+<h2 class="page-header"><%= meal.label %></h2>
+<div class="book-details">
+  <div>
+    <img class="meal-image" src="<%= meal.mealImagePath %>">
+    <div class="meal-details-btn-grid">
+      <a class="btn btn-primary" href="/meals/<%= meal.id %>/edit">Edit</a>
+      <%- include('../partials/deleteForm', { url: `/meals/${meal.id}` }) %>
+      <a class="btn btn-primary meal-details-diet-button" href="/diets/<%= meal.diet.id %>">View Diet</a>
+    </div>
+  </div>
+  <div class="meal-details-grid">
+    <div class="meal-details-label">Diet:</div>
+    <div><%= meal.diet.name %></div>
+    <div class="meal-details-label">Consume Date:</div>
+    <div><%= meal.consumeDate.toDateString() %></div>
+    <div class="meal-details-label">Calorie Count:</div>
+    <div><%= meal.calCount %></div>
+    <div class="meal-details-label">Description:</div>
+    <div><%= meal.description %></div>
+  </div>
+</div>

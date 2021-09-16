@@ -1,0 +1,24 @@
+<h2 class="page-header">Search Diets</h2>
+<form action="/diets" method="GET">
+  <div class="form-row">
+    <div class="form-item">
+      <label>Name</label>
+      <input type="text" name="name" value="<%= searchOptions.name %>">
+    </div>
+  </div>
+  <div class="form-row form-row-end">
+    <button class="btn btn-primary" type="submit">Search</button>
+  </div>
+</form>
+<br>
+<% diets.forEach(diet => { %>
+  <div class="diet-row">
+    <div class="diet-name"><%= diet.name %></div>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="/diets/<%= diet.id %>">View</a>
+      <a class="btn btn-primary" href="/diets/<%= diet.id %>/edit">Edit</a>
+      <%- include('../partials/deleteForm',
+                  { url: `/diets/${diet.id}` }) %>
+    </div>
+  </div>
+<% }) %>
